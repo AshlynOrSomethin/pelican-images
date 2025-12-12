@@ -22,6 +22,9 @@ jobs:
   push:
     name: "java_${{ matrix.tag }}_liberica"
     runs-on: ubuntu-latest
+    env:
+      DOCKER_CLIENT_TIMEOUT: 120
+      COMPOSE_HTTP_TIMEOUT: 120
     strategy:
       fail-fast: false
       matrix:
