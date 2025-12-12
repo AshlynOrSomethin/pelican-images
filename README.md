@@ -61,10 +61,14 @@ Navigate to `Admin Panel -> Nests -> Select your egg`. Add Docker image URL(s) f
   - `ghcr.io/donpedrotv/pterodactyl-images:java_19_zulu`
 - [Java 20 Zulu](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/20)
   - `ghcr.io/donpedrotv/pterodactyl-images:java_20_zulu`
-- [Java 21 Zulu](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/21)
+- [Java 21 Zulu (LTS)](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/21)
   - `ghcr.io/donpedrotv/pterodactyl-images:java_21_zulu`
 - [Java 22 Zulu](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/22)
   - `ghcr.io/donpedrotv/pterodactyl-images:java_22_zulu`
+- [Java 24 Zulu](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/24)
+  - `ghcr.io/donpedrotv/pterodactyl-images:java_24_zulu`
+- [Java 25 Zulu (LTS)](https://github.com/DonPedroTV/pterodactyl-images/tree/main/java-zulu/25)
+  - `ghcr.io/donpedrotv/pterodactyl-images:java_25_zulu`
 
 ### Java Dragonwell [AMD64/ARM64]
 
