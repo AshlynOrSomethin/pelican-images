@@ -53,8 +53,8 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          context: ./java-graalvm
+          context: ./java-graalvm-Oracle-EE
           platforms: linux/amd64,linux/arm64
-          file: ./java-graalvm/${{ matrix.tag }}/Dockerfile
+          file: ./java-graalvm-Oracle-EE/${{ matrix.tag }}/Dockerfile
           push: true
           tags: ghcr.io/donpedrotv/pterodactyl-images:java_${{ matrix.tag }}_graalvm_ee
