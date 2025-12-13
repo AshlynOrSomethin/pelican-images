@@ -1,9 +1,9 @@
-name: build java_graalvm
+name: build java_graalvm_ee
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 17 1,15 * *" # bi-weekly on 1st and 15th calendar day at 17:00
+    - cron: "0 17 1,15 * *" 
   push:
     branches:
       - main
@@ -15,12 +15,12 @@ permissions:
   packages: write
 
 concurrency:
-  group: java-graalvm-${{ github.ref }}-1
+  group: java-graalvm-ee-${{ github.ref }}-1
   cancel-in-progress: true
 
 jobs:
   build_and_push:
-    name: "java_${{ matrix.tag }}_graalvm"
+    name: "java_${{ matrix.tag }}_graalvm_ee"
     runs-on: ubuntu-latest
     env:
       DOCKER_CLIENT_TIMEOUT: 120
@@ -29,13 +29,9 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - 8
-          - 11
-          - 17
-          - 21
-          - 22
           - 24
           - 25
+
     steps:
       - name: Git checkout for Github repository workspace
         uses: actions/checkout@v4
@@ -62,4 +58,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: ./java-graalvm/${{ matrix.tag }}/Dockerfile
           push: true
-          tags: ghcr.io/donpedrotv/pterodactyl-images:java_${{ matrix.tag }}_graalvm
+          tags: ghcr.io/donpedrotv/pterodactyl-images:java_${{ matrix.tag }}_graalvm_ee
