@@ -188,8 +188,6 @@ These are [Shipilev experimental builds](https://builds.shipilev.net/). If you'r
 
 | Version | Image Tag |
 |---------|-----------|
-| Python 2.7 | `ghcr.io/donpedrotv/pterodactyl-images:python_2.7` |
-| Python 3.6 | `ghcr.io/donpedrotv/pterodactyl-images:python_3.6` |
 | Python 3.7 | `ghcr.io/donpedrotv/pterodactyl-images:python_3.7` |
 | Python 3.8 | `ghcr.io/donpedrotv/pterodactyl-images:python_3.8` |
 | Python 3.9 | `ghcr.io/donpedrotv/pterodactyl-images:python_3.9` |
