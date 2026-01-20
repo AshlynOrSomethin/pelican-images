@@ -48,7 +48,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          context: ./java-corretto-alpine/${{ matrix.tag }}
+          context: ./java-corretto-alpine
           platforms: linux/amd64,linux/arm64
           file: ./java-corretto-alpine/${{ matrix.tag }}/Dockerfile
           push: true
