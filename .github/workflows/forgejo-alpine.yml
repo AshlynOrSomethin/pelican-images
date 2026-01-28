@@ -1,56 +1,47 @@
-name: build forgejo_alpine
+name: build forgejo variants
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 17 1,15 * *" # 17:00 UTC on 1st and 15th
+    - cron: "0 17 1,15 * *"
   push:
     branches: [main]
     paths:
-      - forgejo
+      - forgejo/**
 
 permissions:
   contents: read
   packages: write
 
 concurrency:
-  group: ${{ github.workflow }}-forgejo-alpine-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  push:
-    name: "pelican-images:forgejo_${{ matrix.tag }}_alpine"
+  build:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_CLIENT_TIMEOUT: 120
-      COMPOSE_HTTP_TIMEOUT: 120
     strategy:
       fail-fast: false
       matrix:
-        tag: [alpine]
+        variant: [alpine, arch]
+
     steps:
-      - name: Git checkout for Github repository workspace
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup QEMU for multiarch builds
-        uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
 
-      - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          buildkitd-flags: --debug
-
-      - name: Login to registry
-        uses: docker/login-action@v3
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push image
+      - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./forgejo-alpine
-          platforms: linux/amd64, linux/arm64
-          file: ./forgejo/${{ matrix.tag }}/Dockerfile
+          context: ./forgejo/${{ matrix.variant }}
+          file: ./forgejo/${{ matrix.variant }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/ashlynorsomethin/pelican-images:forgejo_${{ matrix.tag }}_alpine
+          tags: ghcr.io/ashlynorsomethin/pelican-images:forgejo_${{ matrix.variant }}
