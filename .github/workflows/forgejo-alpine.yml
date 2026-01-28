@@ -6,8 +6,7 @@ on:
   push:
     branches: [main]
     paths:
-      - forgejo-alpine/**
-      - java-zulu-alpine/**
+      - forgejo
 
 permissions:
   contents: read
@@ -52,6 +51,6 @@ jobs:
         with:
           context: ./forgejo-alpine
           platforms: linux/amd64, linux/arm64
-          file: ./java-zulu-alpine/${{ matrix.tag }}/Dockerfile
+          file: ./forgejo/${{ matrix.tag }}/Dockerfile
           push: true
           tags: ghcr.io/ashlynorsomethin/pelican-images:forgejo_${{ matrix.tag }}_alpine
