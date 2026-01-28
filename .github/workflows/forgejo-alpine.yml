@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [alpine, arch]
+        variant: [alpine]
 
     steps:
       - uses: actions/checkout@v4
