@@ -1,4 +1,4 @@
-FROM        azul/zulu-openjdk-alpine:8-jre-headless
+FROM        alpine:edge
 
 LABEL       author="AshlynOrSomethin" maintainer="ashlyn@onlyhit.xyz"
 LABEL       org.opencontainers.image.source="https://github.com/AshlynOrSomethin/pelican-images"
