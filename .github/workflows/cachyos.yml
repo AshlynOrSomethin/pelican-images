@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - cachyos/**
+      - archlinux/cachyos
 
 permissions:
   contents: read
