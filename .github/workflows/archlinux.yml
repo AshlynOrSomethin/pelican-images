@@ -1,4 +1,4 @@
-name: build arch node image
+name: build archlinux image
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - arch/**
+      - archlinux/**
 
 permissions:
   contents: read
@@ -20,10 +20,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        variant: [arch]
 
     steps:
       - uses: actions/checkout@v4
@@ -40,10 +36,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./arch/
-          file: ./arch/Dockerfile
+          context: ./archlinux/latest
+          file: ./archlinux/latest/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/ashlynorsomethin/pelican-images:arch
-            ghcr.io/ashlynorsomethin/pelican-images:arch-${{ github.sha }}
+            ghcr.io/ashlynorsomethin/pelican-images:archlinux_latest
+            ghcr.io/ashlynorsomethin/pelican-images:archlinux_latest-${{ github.sha }}
