@@ -14,6 +14,8 @@ RUN pacman -Syu --noconfirm \
         inetutils \
         dnsutils \
         jdk-openjdk \
+        docker \
+        ca-certificates \
     && pacman -Scc --noconfirm
 
 # Set Java environment
