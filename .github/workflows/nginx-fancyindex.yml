@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./nginx-fancyindex/
-          file: ./nginx/${{ matrix.variant }}/Dockerfile
+          file: ./nginx-fancyindex/${{ matrix.variant }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/ashlynorsomethin/pelican-images:nginx_${{ matrix.variant }}
+          tags: ghcr.io/ashlynorsomethin/pelican-images:nginx_fancyindex_${{ matrix.variant }}
